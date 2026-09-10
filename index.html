@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PathoCore</title>
+<meta name="description" content="PathoCore — an open-source ecosystem for pathogen genomic surveillance and research data sharing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Palette sampled from the official CIBER lockup */
+  :root{
+    --navy:#023976; --navy-lt:#E7EDF5;
+    --steel:#85919E; --steel-lt:#DDE3E9;
+    --ink:#16222E; --body:#44515E; --rule:#D7DDE4;
+    --page:#FFFFFF; --tint:#F5F7FA;
+    --ok:#1F6B45; --ok-lt:#E7F1EC;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--page);color:var(--body);font-family:var(--sans);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+
+  .masthead{border-bottom:3px solid var(--navy)}
+  .masthead .wrap{display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding-top:16px;padding-bottom:14px}
+  .masthead img{height:44px;width:auto}
+  .masthead .unit{font-size:11px;letter-spacing:.9px;text-transform:uppercase;
+    color:var(--steel);text-align:right;line-height:1.45;font-weight:600}
+
+  .title{background:var(--tint);border-bottom:1px solid var(--rule)}
+  .title .wrap{padding-top:42px;padding-bottom:38px}
+  h1{font-family:var(--serif);font-weight:600;font-size:46px;line-height:1.05;
+    letter-spacing:-.5px;color:var(--navy);margin-bottom:16px}
+  .lede{font-size:17.5px;color:var(--body);max-width:36em}
+
+  main .wrap{padding-top:38px}
+  section{margin-bottom:38px}
+  h2{font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--steel);padding-bottom:9px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+
+  .repo{display:flex;align-items:flex-start;gap:14px;padding:17px 0;
+    border-bottom:1px solid var(--rule)}
+  .repo svg{flex:0 0 20px;margin-top:4px;fill:var(--navy)}
+  .repo .body{flex:1;min-width:0}
+  .repo .n{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--navy)}
+  .repo .u{font-family:var(--mono);font-size:12.5px;color:var(--steel);margin-top:3px;
+    word-break:break-all}
+  .repo .r{font-size:14px;margin-top:7px}
+  .lic{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.4px;padding:3px 8px;
+    background:var(--ok-lt);color:var(--ok);white-space:nowrap;margin-top:4px}
+  .lic.pending{background:transparent;color:var(--steel);border:1px solid var(--steel-lt)}
+
+  .unit-row{display:flex;align-items:center;gap:18px;padding:18px 0;
+    border-bottom:1px solid var(--rule)}
+  .unit-row img{flex:0 0 auto;height:42px;width:auto}
+  .unit-row .body{flex:1;min-width:0}
+  .unit-row .n{font-size:15px;font-weight:700;color:var(--ink)}
+  .unit-row .u{font-family:var(--mono);font-size:12.5px;color:var(--navy);margin-top:3px;
+    word-break:break-all}
+
+  .dl div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:16px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+  .dl .k{font-size:14.5px;font-weight:600;color:var(--ink)}
+  .dl .v{font-family:var(--mono);font-size:13px;color:var(--navy);word-break:break-all}
+
+  .who{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink);
+    margin:18px 0 3px}
+  .aff{font-size:14px;color:var(--steel);margin-bottom:16px}
+  .links{display:flex;flex-wrap:wrap;gap:8px}
+  .links a{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;
+    border:1px solid var(--steel-lt);padding:10px 14px;color:var(--navy);background:var(--page);
+    transition:background .12s,border-color .12s;max-width:100%;word-break:break-all}
+  .links a:hover{background:var(--navy-lt);border-color:var(--navy)}
+  .links svg{width:15px;height:15px;fill:currentColor;flex:0 0 15px}
+
+  footer{margin-top:16px;border-top:3px solid var(--navy);background:var(--tint)}
+  footer .wrap{padding-top:28px;padding-bottom:34px}
+  .credit{font-size:13.5px;color:var(--body);margin-bottom:10px;max-width:44em}
+  .legal{font-size:12px;color:var(--steel);line-height:1.7}
+
+  @media (max-width:560px){
+    h1{font-size:34px}
+    .title .wrap{padding-top:32px;padding-bottom:30px}
+    .masthead img{height:34px}
+    .masthead .unit{font-size:10px}
+    .unit-row img{height:34px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="wrap">
+    <img src="assets/logo-biplat.png" alt="CIBER INFEC — BiPLAT">
+    <div class="unit">Bioinformatics Platform<br>CIBERINFEC</div>
+  </div>
+</div>
+
+<div class="title">
+  <div class="wrap">
+    <h1>PathoCore</h1>
+    <p class="lede">An open-source ecosystem for pathogen genomic surveillance and research data
+      sharing. It connects metadata standardisation, bioinformatics processing and controlled data
+      access through a single versioned data model — a JSON Schema and a laboratory template,
+      generated together — so that a laboratory network can validate, analyse, store and share its
+      data without building any of it twice.</p>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <section>
+    <h2>Repositories</h2>
+
+    <div class="repo">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <div class="body">
+        <a class="n" href="https://github.com/BU-ISCIII/relecov-tools">pathocore-tools</a>
+        <div class="u">github.com/BU-ISCIII/relecov-tools</div>
+        <div class="r">The data model and the processing chain. Python package, 17 command-line
+          modules, distributed through Bioconda.</div>
+      </div>
+      <span class="lic">GPL-3.0</span>
+    </div>
+
+    <div class="repo">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <div class="body">
+        <a class="n" href="https://github.com/BIPLAT-CIBERINFEC/pathocore-api">pathocore-api</a>
+        <div class="u">github.com/BIPLAT-CIBERINFEC/pathocore-api</div>
+        <div class="r">Django REST API over the shared database. Public aggregate endpoints,
+          authenticated endpoints for records and project views.</div>
+      </div>
+      <span class="lic">GPL-3.0</span>
+    </div>
+
+    <div class="repo">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <div class="body">
+        <a class="n" href="https://github.com/BIPLAT-CIBERINFEC/pathocore-web">pathocore-web</a>
+        <div class="u">github.com/BIPLAT-CIBERINFEC/pathocore-web</div>
+        <div class="r">Next.js platform. Public data browser and project areas protected by Keycloak.</div>
+      </div>
+      <span class="lic pending">Licence pending</span>
+    </div>
+
+    <div class="repo">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <div class="body">
+        <a class="n" href="https://github.com/BU-ISCIII/mepram-omop-api">mepram-omop-api</a>
+        <div class="u">github.com/BU-ISCIII/mepram-omop-api</div>
+        <div class="r">Satellite service for the clinical layer. Serves aggregated OMOP facts
+          alongside the core API.</div>
+      </div>
+      <span class="lic">GPL-3.0</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live deployment</h2>
+    <div class="dl">
+      <div><span class="k">Data Hub</span>
+        <a class="v" href="https://mepram-datahub.ciberisciii.es">mepram-datahub.ciberisciii.es</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Technical units</h2>
+
+    <a class="unit-row" href="https://biplat.ciberinfec.es/">
+      <img src="assets/logo-biplat.png" alt="BiPLAT">
+      <div class="body">
+        <div class="n">Bioinformatics Platform, CIBERINFEC</div>
+        <div class="u">biplat.ciberinfec.es</div>
+      </div>
+    </a>
+
+    <a class="unit-row" href="https://www.isciii.es/en/ub/unidad">
+      <img src="assets/logo-buisciii.png" alt="BU-ISCIII">
+      <div class="body">
+        <div class="n">Bioinformatics Unit, Instituto de Salud Carlos III</div>
+        <div class="u">isciii.es/en/ub/unidad</div>
+      </div>
+    </a>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="who">Daniel Valle-Millares</div>
+    <div class="aff">Bioinformatics Platform, CIBERINFEC · Instituto de Salud Carlos III</div>
+    <div class="links">
+      <a href="mailto:da.valle@ciberisciii.es">
+        <svg viewBox="0 0 16 16"><path d="M1.5 3h13A1.5 1.5 0 0 1 16 4.5v7A1.5 1.5 0 0 1 14.5 13h-13A1.5 1.5 0 0 1 0 11.5v-7A1.5 1.5 0 0 1 1.5 3zm.2 1.2 6.3 4.2 6.3-4.2H1.7z"/></svg>
+        da.valle@ciberisciii.es
+      </a>
+      <a href="https://orcid.org/0000-0002-5205-855X">
+        <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM4.7 12.2H3.4V5.5h1.3v6.7zM4 4.7a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6zm3 7.5V5.5h2.6c2.5 0 3.6 1.5 3.6 3.35 0 1.85-1.2 3.35-3.6 3.35H7zm1.3-1.2h1.2c1.7 0 2.4-1 2.4-2.15 0-1.15-.7-2.15-2.4-2.15H8.3v4.3z"/></svg>
+        ORCID 0000-0002-5205-855X
+      </a>
+      <a href="https://www.linkedin.com/in/daniel-v-millares-239b27185/">
+        <svg viewBox="0 0 16 16"><path d="M0 1.6C0 .7.7 0 1.6 0h12.8c.9 0 1.6.7 1.6 1.6v12.8c0 .9-.7 1.6-1.6 1.6H1.6C.7 16 0 15.3 0 14.4V1.6zM4.9 13.4V6.2H2.5v7.2h2.4zM3.7 5.2c.8 0 1.4-.6 1.4-1.3S4.5 2.6 3.7 2.6s-1.4.6-1.4 1.3.6 1.3 1.4 1.3zm3 8.2h2.4V9.4c0-.2 0-.4.1-.6.2-.4.6-.9 1.3-.9.9 0 1.3.7 1.3 1.7v3.8h2.4V9.3c0-2.2-1.2-3.3-2.8-3.3-1.3 0-1.9.7-2.2 1.2V6.2H6.7c0 .7 0 7.2 0 7.2z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Daniel-VM">
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="credit">Developed by the Bioinformatics Platform of CIBERINFEC and the Bioinformatics
+      Unit BU-ISCIII, with the RELECOV, RedLabRA and MePRAM laboratory networks.</p>
+    <p class="legal">Instituto de Salud Carlos III · CIBERINFEC.</p>
+  </div>
+</footer>
+
+</body>
+</html>
